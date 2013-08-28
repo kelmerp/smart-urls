@@ -1,7 +1,32 @@
-<div class="home-page">
-  <h1> Welcome </h1>
 
- <a href="/login">login</a><br>
- <a href="/create">create_account</a>
+<%  if logged_in?%>
+  
+  <div class="home-page">
+    <h1> Welcome <%= current_user.code_name %></h1>
 
-</div>
+   <a href="/logout">logout</a><br>
+   <a href="/my_links">my links</a>
+
+  </div>
+  <div class="main-page">
+   <h1> Give us a fucking URL (what kind of half assed secret agent are you?) </h1>
+   <%= erb :_url_form %>
+  </div>
+
+<% else %>
+
+  <div class="home-page">
+    <h1> Welcome </h1>
+
+   <a href="/login">login</a><br>
+   <a href="/create">create_account</a>
+
+  </div>
+  <div class="main-page">
+   <h1> Give us a fucking URL (lazy bastard) </h1>
+   <%= erb :_url_form %>
+ </div>
+
+<% end %>
+
+

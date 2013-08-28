@@ -1,0 +1,12 @@
+<% if !current_user %>
+  <div class ="secret">
+    <h1>Welcome To Your Super Awesome Secret Page</h1>
+       <%= erb :_url_form %>
+    <a href="/logout">logout</a>
+  </div>
+<% else %>
+  <span class = "fuck"> GO LOG IN YOU FUCK </span>
+  <a class = "login-link" href = "/login">login</a>
+<% end %>
+
+

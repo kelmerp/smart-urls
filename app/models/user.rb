@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+  
+  has_many :urls
+
   validates :email, uniqueness: true
   validates :code_name, uniqueness: true
 

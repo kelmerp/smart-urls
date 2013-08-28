@@ -1,6 +1,5 @@
 ###### GET ROUTES ######
 get '/' do
-  session.clear
   erb :index
 end
 
@@ -12,8 +11,13 @@ get '/create' do
   erb :create
 end
 
-get '/logged_in_page' do
-  erb :logged_in_page
+get '/my_links' do
+  erb :my_links
+end
+
+get '/logout' do
+  session.clear
+  erb :goodbye
 end
 
 ###### POST ROUTES ######
@@ -26,9 +30,9 @@ end
 post '/login' do
   @user = User.authenticate(params[:user])
   if @user != nil
-    session[:user] = @user.id
+    session[:user_id] = @user.id
     puts session
-    redirect to "/logged_in_page"
+    redirect to "/"
   else
     redirect to "/"
   end
