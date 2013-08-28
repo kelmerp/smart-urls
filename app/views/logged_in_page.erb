@@ -1,0 +1,12 @@
+<% if session[:user] != nil %>
+  <div class ="secret">
+    <h1>Welcome To Your Super Awesome Secret Page</h1>
+
+    <a href="/">logout</a>
+  </div>
+<% else %>
+  <span class = "fuck"> GO LOG IN YOU FUCK </span>
+  <a class = "login-link" href = "/login">login</a>
+<% end %>
+
+
