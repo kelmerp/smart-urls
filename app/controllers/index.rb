@@ -19,12 +19,24 @@ get '/logout' do
   session.clear
   erb :goodbye
 end
+get '/realsite/:id' do
+  @url = Url.find(params[:id])
+  @url.increment_counter
+  @url.save
+  redirect to "#{@url.long_url}"
+end
 
 ###### POST ROUTES ######
 post '/create' do
   User.create(params[:user])
-
-  erb :login
+  @user = User.authenticate(params[:user])
+  if @user != nil
+    session[:user_id] = @user.id
+    puts session
+    redirect to "/"
+  else
+    redirect to "/"
+  end
 end
 
 post '/login' do

@@ -1,12 +1,18 @@
-<% if !current_user %>
+<% if logged_in? %>
   <div class ="secret">
     <h1>Welcome To Your Super Awesome Secret Page</h1>
+
        <%= erb :_url_form %>
+    
+      <% current_user.urls.each do |url| %>
+        <%= url.long_url %><a href="/realsite/<%= url.id %>"><%= url.short_url %></a>
+      <% end %>
     <a href="/logout">logout</a>
   </div>
 <% else %>
-  <span class = "fuck"> GO LOG IN YOU FUCK </span>
+  <span class = "fuck"> GO LOG IN YOU STUPID FUCK </span><br>
   <a class = "login-link" href = "/login">login</a>
+  <img src="/angry-face.jpg" height="50%" width="50%">
 <% end %>
 
 

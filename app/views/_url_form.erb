@@ -5,7 +5,7 @@
 
  <% if @url %>
   <% if @url.valid? %>
-    <a href="<%= @url.long_url %>"><%= @url.short_url %></a>
+    <a href="/realsite/<%= @url.id %>"><%= @url.short_url %></a>
   <% else %>
     <span class="errors"><%= @url.errors.messages[:long_url].join(" ") %></span>
   <% end %>
